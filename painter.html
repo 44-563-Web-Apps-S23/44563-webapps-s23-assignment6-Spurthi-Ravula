@@ -11,6 +11,18 @@
     <h2>Getting input</h2>
 
     <form>
+        <label for="form1_age">What is your age </label>
+        <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+    
+        <label for="form1_nick">What is your nickname </label>
+        <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
+    
+        <input type="button" onclick="resolveForm()" value="Get values from form">
+    </form>
+
+    <br>
+    
+    <form>
         <label for="form2_painter">The hidden painter name</label>
         <input type="password" id="form2_painter" name="form2_painter" value="Monet"><br>
 
@@ -43,6 +55,28 @@
 
             document.getElementById("results").innerHTML = "good count : " + good + " <br> oops count : " + oops
 
+        }
+    </script>
+    <div class="container">
+        <img src="Veronica.jpg" class="bordered mx-auto d-block" width="100px" height="100px" alt="Veronica" id="images" onclick="selectImage()">
+    </div>
+    <script>
+        var useImage = 1
+        function selectImage(){
+        switch(useImage){
+            case 1:
+                document.getElementById("images").src="Abroma.jpg";
+                useImage+=1;
+                break;
+                case 2:
+                document.getElementById("images").src="Restio.jpg";
+                useImage+=1;
+                break;
+                case 3:
+                document.getElementById("images").src="Veronica.jpg";
+                useImage=1;
+                break;
+            }
         }
     </script>
 

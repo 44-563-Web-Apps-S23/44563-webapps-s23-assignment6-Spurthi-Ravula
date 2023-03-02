@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Candy Page</title>
+</head>
+
+<body>
+    <h2>Spurthi Ravula chooses candy</h2>
+    <form>
+        <input type="checkbox" id="dark" name="candy" value="true">
+        <label for="dark">Dark Chocolate</label> <br>
+
+        <input type="checkbox" id="nuts" name="candy" value="true">
+        <label for="nuts">Nuts</label> <br>
+
+        <input type="checkbox" id="chewy" name="candy" value="false">
+        <label for="chewy">Chewy</label> <br>
+
+        <input type="button" value="Select a box" onclick="selectBox()">
+    </form>
+    <br>
+    <p id="result"></p>
+
+    <script>
+        var my_candy_box = {};
+        function selectBox() {
+            my_candy_box = {};
+            let dark = document.getElementById("dark").checked;
+            let nuts = document.getElementById("nuts").checked;
+            let chewy = document.getElementById("chewy").checked;
+            my_candy_box.dark = dark;
+            my_candy_box.nuts = nuts;
+            my_candy_box.chewy = chewy;
+            document.getElementById("result").innerHTML = JSON.stringify(my_candy_box);
+        }
+
+
+    </script>

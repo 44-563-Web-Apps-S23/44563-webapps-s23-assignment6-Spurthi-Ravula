@@ -1,41 +1,71 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Conversations page</title>
 </head>
+
 <body>
     <h2>Spurthi Ravula shows currency conversions</h2>
-<form>
-    <label for="amount">Enter base amount</label>
-    <input type="number" id="amount" name="amount" value="50"> <br>
+    <form>
+        <label for="amount">Enter base amount</label>
+        <input type="number" id="amount" name="amount" value="50"> <br>
 
-    <label for="conversion">Enter the conversion rate</label>
-    <input type="number" id="conversion" name="conversion" value="35"> <br>
+        <label for="conversion">Enter the conversion rate</label>
+        <input type="number" id="conversion" name="conversion" value="35"> <br>
 
-    <input type="button" onclick="convert()" value="Show conversions">
-</form>
-<p id="result"></p>
+        <input type="button" onclick="convert()" value="Show conversions">
+    </form>
+    <p id="result"></p>
+
+    <form>
+        <input type="radio" id="average" name="calculations" onclick="chooseOp()" value="mean" checked>
+        <label for="average">average</label><br>
+
+        <input type="radio" id="max" name="calculations" onclick="chooseOp()" value="maximum">
+        <label for="max">max</label><br>
+
+        <input type="radio" id="min" name="calculations" onclick="chooseOp()" value="minimum">
+        <label for="min">min</label><br>
+    </form>
+    <p id="result2"></p>
 
 
-<script>
-    function convert() {
-        let base = parseInt(document.getElementById("amount").value);
-        let value = parseInt(document.getElementById("conversion").value);
-        let toShow = "";
-        let out = document.getElementById("result");
+    <script>
+        function convert() {
+            let base = parseInt(document.getElementById("amount").value);
+            let value = parseInt(document.getElementById("conversion").value);
+            let toShow = "";
+            let out = document.getElementById("result");
 
-        for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < 5; i++) {
 
-            let conversion = base * value;
-            toShow += " " + base + " is " + conversion.toFixed(1) + ";";
-            base *= 2;
+                let conversion = base * value;
+                toShow += " " + base + " is " + conversion.toFixed(1) + ";";
+                base *= 2;
+            }
+            document.getElementById("result").innerHTML = "Conversions are:" + toShow;
         }
-        document.getElementById("result").innerHTML = "Conversions are:" + toShow;
-    }
 
-    
+        function chooseOp() {
+            let results = 0;
+            let base = parseInt(document.getElementById("amount").value);
+            let conversion = parseInt(document.getElementById("conversion").value);
+            let average = document.getElementById("average").checked;
+            let max = document.getElementById("max").checked;
+            let min = document.getElementById("min").checked;
+            if (average) {
+                results = (base + conversion) / 2;
+            } else if (max) {
+                results = Math.max(base, conversion);
+            } else if (min) {
+                results = Math.min(base, conversion);
+            }
+            document.getElementById("result2").innerHTML = results;
+        }
 
 
-</script>
+    </script>
 </body>
+
 </html>

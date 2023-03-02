@@ -21,7 +21,7 @@
     </form>
 
     <br>
-    
+
     <form>
         <label for="form2_painter">The hidden painter name</label>
         <input type="password" id="form2_painter" name="form2_painter" value="Monet"><br>
@@ -48,7 +48,11 @@
                 good += 1
                 alert("You got it right");
 
-            } else {
+            } else if (oops >= 10) {
+                document.getElementById("btn").onclick = giveAlert();
+
+            }
+            else {
                 oops += 1
                 alert("Sorry");
             }
@@ -77,6 +81,9 @@
                 useImage=1;
                 break;
             }
+        }
+        function giveAlert() {
+            alert("Sorry, ran out of guesses.");
         }
     </script>
 

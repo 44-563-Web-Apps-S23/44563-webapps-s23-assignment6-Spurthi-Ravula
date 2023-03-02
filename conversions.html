@@ -1,43 +1,41 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Conversations Page</title>
-    </head>
+<head>
+    <title>Conversations page</title>
+</head>
 <body>
-
-
-<h1>Spurthi shows currency conversions</h1>
-<h2>Getting input</h2>
-
+    <h2>Spurthi Ravula shows currency conversions</h2>
 <form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+    <label for="amount">Enter base amount</label>
+    <input type="number" id="amount" name="amount" value="50"> <br>
 
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
+    <label for="conversion">Enter the conversion rate</label>
+    <input type="number" id="conversion" name="conversion" value="35"> <br>
 
-    <input type="button" onclick="resolveForm()" value="Get values from form">
+    <input type="button" onclick="convert()" value="Show conversions">
 </form>
+<p id="result"></p>
 
 
-<p id="result">This text will be replaced </p>
+<script>
+    function convert() {
+        let base = parseInt(document.getElementById("amount").value);
+        let value = parseInt(document.getElementById("conversion").value);
+        let toShow = "";
+        let out = document.getElementById("result");
 
-<script> 
+        for (let i = 0; i < 5; i++) {
 
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
+            let conversion = base * value;
+            toShow += " " + base + " is " + conversion.toFixed(1) + ";";
+            base *= 2;
+        }
+        document.getElementById("result").innerHTML = "Conversions are:" + toShow;
     }
-}
-</script>
 
+    
+
+
+</script>
 </body>
-</html> 
+</html>
